@@ -5,7 +5,7 @@
     <a class="button "><app-login-logout></app-login-logout></a>
 </mat-toolbar>
 
-<h3>Patient's Complaints</h3>
+<h3>Patient Complaints</h3>
 <div class="table-box mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 
@@ -23,13 +23,13 @@
 
         <!-- Weight Column -->
         <ng-container matColumnDef="Complains">
-            <th mat-header-cell *matHeaderCellDef> Complains </th>
+            <th mat-header-cell *matHeaderCellDef> Complaints </th>
             <td mat-cell *matCellDef="let element"> {{element.complaint}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="Date">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <th mat-header-cell *matHeaderCellDef> Complaint Date </th>
             <td mat-cell *matCellDef="let element"> {{element.date}} </td>
         </ng-container>
 

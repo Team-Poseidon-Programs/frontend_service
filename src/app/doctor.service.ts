@@ -25,14 +25,14 @@ export class DoctorService {
   
   // This service is to get all the patient appointment details based on acceptance number and doctor email id.
   public GetAppointmentsByAceptanceEmail(id:Number,email:String):Observable<any>{
-    const url = `${this.urlAppointment}/AcceptanceAndEmail/${id}/${email}`;
+    const url = `/api/Appointment/AcceptanceAndEmail/${id}/${email}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/Get_by_ID/11
   // This service is to get the patient detila based on their patient id.
   public GetPatientDetailsByID(id:Number):Observable<any>{
-    const url = `${this.urlAppointment}/Get_by_ID/${id}`
+    const url = `/api/Patient/Get_by_ID/${id}`
     return this.http.get<any>(url);
   }
 
@@ -40,7 +40,7 @@ export class DoctorService {
   // https://localhost:7292/poseidonhc/updatebyAppointMentNo/4/1
 
   public PutAcceptancebyId(id:Number,Acceptance:Number):Observable<any>{
-    const url = `${this.urlAppointment}/updatebyAppointMentNo/${id}/${Acceptance}`;
+    const url = `/api/Appointment/updatebyAppointMentNo/${id}/${Acceptance}`;
     return this.http.put<any>(url,null);
     
   }
@@ -49,26 +49,26 @@ export class DoctorService {
   public GetByAcceptanceDoctorEmailDate(AcceptanceNo:number,Date:string,DoctorEmail:string){
     const ogDate = Date.replace("/" ,"%2F")
     const ogDocMail = DoctorEmail.replace(/@/g,"%40")
-    const url = `${this.urlAppointment}/GetByDateAcceptanceNoDoctorEmail?AcceptanceId=${AcceptanceNo}&Date=${ogDate}&DoctorEmail=${ogDocMail}`;
+    const url = `/api/Appointment/GetByDateAcceptanceNoDoctorEmail?AcceptanceId=${AcceptanceNo}&Date=${ogDate}&DoctorEmail=${ogDocMail}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/GetVisitDetailsByAcceptanceId/43
   public GetVisitDetailsByAcceptanceId(AcceptanceID:number){
-    const url = `${this.urlAppointment}/GetVisitDetailsByAcceptanceId/${AcceptanceID}`;
+    const url = `/api/VisitDetails/GetVisitDetailsByAcceptanceId/${AcceptanceID}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/allery/84
 
   public GetAllergyDetailsByVisitID(VisitId:number){
-    const url = `${this.urlAppointment}/allery/${VisitId}`;
+    const url = `/api/allery/${VisitId}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/GetTestListbyid/84
   public GetTestResultsByVisitId(VisitId:number){
-    const url = `${this.urlAppointment}/GetTestListbyid/${VisitId}`
+    const url = `/api/Test/GetTestListbyid/${VisitId}`
     return this.http.get<any>(url);
   }
 
@@ -80,40 +80,40 @@ export class DoctorService {
 
   public PutUpdateTest(TestID:number,TestDetail:TestDetail){
 
-    const url = `${this.urlAppointment}/UpdateTest/${TestID}`
+    const url = `/api/Test/UpdateTest/${TestID}`
     return this.http.put<any>(url,TestDetail);
 
 
   }
 
   public DeleteTest(testID:number){
-    const url = `${this.urlAppointment}/DeleteTest/${testID}`
+    const url = `/api/Test/DeleteTest/${testID}`
     return this.http.delete<any>(url);
   }
 
   // /poseidonhc/AddTest
   public AddTest(TestDetails:TestDetail1){
-    const url = `${this.urlAppointment}/AddTest`
+    const url = `/api/Test/AddTest`
     return this.http.post<any>(url,TestDetails);
   }
 
   // /poseidonhc/GetPrescriptionById/{id}
 
   public ViewPrescription(VisitID:number){
-    const url = `${this.urlAppointment}/GetPrescriptionById/${VisitID}`;
+    const url = `/api/Prescription/GetPrescriptionById/${VisitID}`;
     return this.http.get<any>(url);
   }
   // /poseidonhc/AddPrescription
 
   public AddPriscription(Pres:Prescription){
-    const url = `${this.urlAppointment}/AddPrescription`
+    const url = `/api/Prescription/AddPrescription`
     return this.http.post<any>(url,Pres);
   }
 
   // /poseidonhc/Get_by_ID/{id}
 
   public GetPatientById(patId:number){
-    const url = `${this.urlAppointment}/Get_by_ID/${patId}`;
+    const url = `/api/Patient/Get_by_ID/${patId}`;
     return this.http.get<any>(url);
   }
 
@@ -121,7 +121,7 @@ export class DoctorService {
   // poseidonhc/GetVisitDetailsById/{id}
 
   public GetVisitByPatientId(patId:number){
-    const url = `${this.urlAppointment}/GetVisitDetailsById/${patId}`;
+    const url = `/api/VisitDetails/GetVisitDetailsById/${patId}`;
     return this.http.get<any>(url);
 
   }
@@ -134,7 +134,7 @@ export class DoctorService {
   // /poseidonhc/sendEmail/{email}/{status}
 
   public EmailSender(Email:string,Status:number){
-    const url = `${this.urlAppointment}/sendEmail/${Email}/${Status}`
+    const url = `/api/EmailSender/sendEmail/${Email}/${Status}`
     return this.http.post<any>(url,null);
   }
 
@@ -143,7 +143,7 @@ export class DoctorService {
 
   public GetDoctorDetails(Email:string){
     const ogDocMail = Email.replace(/@/g,"%40")
-    const url = `${this.urlAppointment}/Get_particular_doctor/${ogDocMail}`;
+    const url = `/api/Doctor/particular/${ogDocMail}`;
     return this.http.get<any>(url);
   }
 
@@ -151,47 +151,8 @@ export class DoctorService {
 
   public GetDoctorAvailablityByEmail(Email:string){
     const ogDocMail = Email.replace(/@/g,"%40")
-    const url = `${this.urlAppointment}/FindDoctorByEmailID/${ogDocMail}`;
+    const url = `/api/PhysicianAvailability/FindDoctorByEmailID/${ogDocMail}`;
     return this.http.get<any>(url);
 
   }
-
-
-
-
-  Patient_Details: any[] = [
-    {position:1,name:'Abdul',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:2,name:'Madhu',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:3,name:'MadhuVanthi',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:4,name:'Ajith',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:5,name:'Yugaraj',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:6,name:'Maruti',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:7,name:'Rizwan',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:8,name:'Jyotish',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:9,name:'Mahesh',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:10,name:'Mani',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:11,name:'Monica',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:12,name:'Ajay',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-    {position:13,name:'Raghu',age:'17-Mar-2023',gender:'Arthritis is a common condition that causes pain and inflammation in a joint.',diagnosis:'Flu (influenza) is a common infectious viral illness spread by coughs and sneezes. It can be very unpleasant, but you ll usually begin to feel better within about a week.'},
-
-    // {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    // {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    // {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    // {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    // {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    // {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    // {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    // {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    // {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-    // {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-    // {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-    // {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-    // {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-    // {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-    // {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-    // {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-    // {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-    // {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-    // {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
-  ];
 }
