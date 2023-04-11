@@ -1,0 +1,44 @@
+<mat-toolbar class="nav-bar">
+    <span>Poseidon Healthcare</span>
+    <div class="space"></div>
+    <a class="button" (click)="to_admin()">Profile</a>
+    <a class="button "><app-login-logout></app-login-logout></a>
+</mat-toolbar>
+
+<h3>Patient's Complaints</h3>
+<div class="table-box mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element; let i = index"> {{(paginator.pageIndex * paginator.pageSize) + (i + 1)}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Email">
+            <th mat-header-cell *matHeaderCellDef>Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.patientEmail}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Complains">
+            <th mat-header-cell *matHeaderCellDef> Complains </th>
+            <td mat-cell *matCellDef="let element"> {{element.complaint}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]">
+    </mat-paginator>
+
+</div>

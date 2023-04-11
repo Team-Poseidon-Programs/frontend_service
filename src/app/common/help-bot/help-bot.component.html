@@ -1,0 +1,282 @@
+<div class="main-form">
+    <div>
+        <p>Hello!</p>
+        <p>Do you need any help?</p>
+    </div>
+
+    <div>
+        <button class="button2" type="button" (click)="submit(1)">Yes</button>
+        <button class="button2" type="button" (click)="submit(2)">No</button>
+    </div>
+    <br>
+    <div [ngSwitch]="switch_exp">
+        <div *ngSwitchCase="1">
+            <div><button class="buttons" type="button" (click)="patient(1)">Problem while login</button>
+            </div>
+            <br>
+            <div><button class="buttons" type="button" (click)="patient(2)">Problem while Signup</button>
+            </div>
+            <br>
+            <div><button class="buttons" type="button" (click)="patient(3)">Page not loaded</button></div>
+            <br>
+            <div><button class="buttons" type="button" (click)="patient(4)">Details not showing</button>
+            </div>
+            <br>
+            <div><button class="buttons" type="button" (click)="patient(5)">Couldn't find a doctor</button>
+            </div>
+            <br>
+            <div><button class="buttons" type="button" (click)="patient(6)">My problem not listed</button>
+            </div>
+            <br>
+            <div [ngSwitch]="patient_switchexp">
+                <div *ngSwitchCase="1">
+                    <p class="right_side">Problem while login</p>
+                    <br><br><br>
+                    <div class="left-side"> Try this methods
+                        <ul>
+                            <li>Check your credentails</li>
+                            <li>Check your internet connection</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="sml-buttons" type="button" (click)="login_problem(1)">Is it
+                            helpful</button>
+                        <button class="sml-buttons" type="button" (click)="login_problem(2)">Not
+                            helpful</button>
+                        <div [ngSwitch]="login_switchexp">
+                            <br>
+                            <div *ngSwitchCase="1">
+                                <p class="left-side" style="text-align: center;"> Glad that help :)</p>
+                            </div>
+                            <div *ngSwitchCase="2">
+                                <p class="left-side">Sorry to here that... please type your email and your
+                                    problem.
+                                    we'll try to resolve it soon</p>
+                                <form class="example-form">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input name="Email" matInput ngModel [(ngModel)]="email"
+                                            placeholder="xzy@gmail.com">
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter your problem</mat-label>
+                                        <textarea name="complain" matInput ngModel [(ngModel)]="complain"
+                                            placeholder="type your problem here"></textarea>
+                                    </mat-form-field>
+                                    <div><button class="buttons submit-button" type="submit"
+                                            (click)="onSubmit()">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="2">
+                    <p class="right_side">Problem while Signup</p>
+                    <br><br><br>
+                    <div class="left-side"> Try this methods
+                        <ul>
+                            <li>Check your internet connection</li>
+                            <li>Fill all mandatory details</li>
+                            <li>Fill the details in required pattern</li>
+                            <li>Enter correct password in confirm password field</li>
+                            <li>Sometimes the server is busy try after sometime</li>
+                            <li>Try to close the tab and open again</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="sml-buttons" type="button" (click)="page_problem(1)">Is it
+                            helpful</button>
+                        <button class="sml-buttons" type="button" (click)="page_problem(2)">Not
+                            helpful</button>
+                        <div [ngSwitch]="page_switchexp">
+                            <br>
+                            <div *ngSwitchCase="1">
+                                <p class="left-side" style="text-align: center;"> Glad that help :)</p>
+                            </div>
+                            <div *ngSwitchCase="2">
+                                <p class="left-side">Sorry to here that... please type your email and your
+                                    problem.
+                                    we'll try to resolve it soon</p>
+                                <form class="example-form">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input name="Email" matInput ngModel [(ngModel)]="email"
+                                            placeholder="xzy@gmail.com">
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter your problem</mat-label>
+                                        <textarea name="complain" matInput ngModel [(ngModel)]="complain"
+                                            placeholder="type your problem here"></textarea>
+                                    </mat-form-field>
+                                    <div><button class="buttons submit-button" type="submit"
+                                            (click)="onSubmit()">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="3">
+                    <p class="right_side">Page not loaded</p>
+                    <br><br><br>
+                    <div class="left-side"> Try this methods
+                        <ul>
+                            <li>Check your internet connection</li>
+                            <li>Sometimes the server is busy try after sometime</li>
+                            <li>Try to close the tab and open again</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="sml-buttons" type="button" (click)="page_problem(1)">Is it
+                            helpful</button>
+                        <button class="sml-buttons" type="button" (click)="page_problem(2)">Not
+                            helpful</button>
+                        <div [ngSwitch]="page_switchexp">
+                            <br>
+                            <div *ngSwitchCase="1">
+                                <p class="left-side" style="text-align: center;"> Glad that help :)</p>
+                            </div>
+                            <div *ngSwitchCase="2">
+                                <p class="left-side">Sorry to here that... please type your email and your
+                                    problem.
+                                    we'll try to resolve it soon</p>
+                                <form class="example-form">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input name="Email" matInput ngModel [(ngModel)]="email"
+                                            placeholder="xzy@gmail.com">
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter your problem</mat-label>
+                                        <textarea name="complain" matInput ngModel [(ngModel)]="complain"
+                                            placeholder="type your problem here"></textarea>
+                                    </mat-form-field>
+                                    <div><button class="buttons submit-button" type="submit"
+                                            (click)="onSubmit()">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="4">
+                    <p class="right_side">Details not showing</p>
+                    <br><br><br>
+                    <div class="left-side"> Try this methods
+                        <ul>
+                            <li>Check your internet connection</li>
+                            <li>Sometimes the server is busy, please wait for sometime</li>
+                            <li>Try to close the tab and open again</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="sml-buttons" type="button" (click)="data_problem(1)">Is it
+                            helpful</button>
+                        <button class="sml-buttons" type="button" (click)="data_problem(2)">Not
+                            helpful</button>
+                        <div [ngSwitch]="data_switchexp">
+                            <br>
+                            <div *ngSwitchCase="1">
+                                <p class="left-side" style="text-align: center;"> Glad that help :)</p>
+                            </div>
+                            <div *ngSwitchCase="2">
+                                <p class="left-side">Sorry to here that... please type your email and your
+                                    problem.
+                                    we'll try to resolve it soon</p>
+                                <form class="example-form">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input name="Email" matInput ngModel [(ngModel)]="email"
+                                            placeholder="xzy@gmail.com">
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter your problem</mat-label>
+                                        <textarea name="complain" matInput ngModel [(ngModel)]="complain"
+                                            placeholder="type your problem here"></textarea>
+                                    </mat-form-field>
+                                    <div><button class="buttons submit-button" type="submit"
+                                            (click)="onSubmit()">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="5">
+                    <p class="right_side">Couldn't find a doctor</p>
+                    <br><br><br>
+                    <div class="left-side"> Try this methods
+                        <ul>
+                            <li>Check with other dates</li>
+                            <li>Sometimes the server is busy, please wait for sometime</li>
+                            <li>Try to close the tab and open again</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="sml-buttons" type="button" (click)="doc_problem(1)">Is it
+                            helpful</button>
+                        <button class="sml-buttons" type="button" (click)="doc_problem(2)">Not
+                            helpful</button>
+                        <div [ngSwitch]="doc_switchexp">
+                            <br>
+                            <div *ngSwitchCase="1">
+                                <p class="left-side" style="text-align: center;"> Glad that help :)</p>
+                            </div>
+                            <div *ngSwitchCase="2">
+                                <p class="left-side">Sorry to here that... please type your email and your
+                                    problem.
+                                    we'll try to resolve it soon</p>
+                                <form class="example-form">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input name="Email" matInput ngModel [(ngModel)]="email"
+                                            placeholder="xzy@gmail.com">
+                                    </mat-form-field>
+                                    <br>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter your problem</mat-label>
+                                        <textarea name="complain" matInput ngModel [(ngModel)]="complain"
+                                            placeholder="type your problem here"></textarea>
+                                    </mat-form-field>
+                                    <div><button class="buttons submit-button" type="submit"
+                                            (click)="onSubmit()">Submit</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="6">
+                    <p class="left-side">Sorry to here that... please type your email and your problem.
+                        we'll try to resolve it soon</p>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input name="Email" matInput ngModel [(ngModel)]="email" placeholder="xzy@gmail.com">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Enter your problem</mat-label>
+                            <textarea name="complain" matInput ngModel [(ngModel)]="complain"
+                                placeholder="type your problem here"></textarea>
+                        </mat-form-field>
+                        <div><button class="buttons submit-button" type="submit" (click)="onSubmit()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="2">
+            <div>Thank you... If you need any help ask me :)</div>
+        </div>
+    </div>
+</div>

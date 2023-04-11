@@ -1,0 +1,91 @@
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #444343;
+    font-family: 'montserrat';
+    font-weight: bold;
+    margin-left: 1%;
+    margin-right: 2%;
+}
+
+.isactive{
+    padding: 0 10px 0 10px;
+    background-color: #6DF5D4 !important;
+    border-radius: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+button {
+    background-color: #6DF5D4 !important;
+}
+
+.container {
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 30px;
+}
+
+h3 {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}
+
+h3 span {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}
+
+.detail-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}
+
+img {
+    margin-top: 5px;
+}
+
+.content-container {
+    padding: 20px;
+    width: 40%;
+    height: 25%;
+    border-radius: 40px;
+    border: solid 1px #444343;
+    box-shadow: none;
+    margin-bottom: 40px;
+    background-color: #E8E8E8;
+}
+
+.card-area {
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+mat-card-actions {
+    margin-top: 30px;
+    align-items: center;
+}
+
+.actions button {
+    background-color: #6DF5D4 !important;
+    border-radius: 20px;
+    width: 120px;
+    color: #444343;
+    font-family: 'montserrat';
+    font-weight: 600;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+mat-card-content {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}

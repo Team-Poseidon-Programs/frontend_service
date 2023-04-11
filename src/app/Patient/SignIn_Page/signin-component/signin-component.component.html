@@ -1,0 +1,11 @@
+
+<app-signin-navbar-component></app-signin-navbar-component>
+<app-signin-form-component></app-signin-form-component>
+
+<div class="box">
+    <button mat-fab class="bet_time help-button" (click)="toggleChatbot()"><img src="../../../../assets/help.png" width="40px" height="40px"></button>
+</div>
+
+<div class="chatbot-container" *ngIf="showChatbot" [@fadeAnimation]>
+    <app-help-bot></app-help-bot>
+</div>

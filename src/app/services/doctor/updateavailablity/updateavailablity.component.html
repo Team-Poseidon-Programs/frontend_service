@@ -1,0 +1,47 @@
+<app-doctor-nav></app-doctor-nav>
+
+<div class="container">
+    <div fxLayoutAlign="end">
+        <button mat-fab routerLink="/doctorhome"><img src="../../../../assets/arrow-left-long-solid.svg" width="25px"
+                height="25px" alt=""></button>
+    </div>
+</div>
+
+<div class="detail-container">
+    <mat-card class="content-container">
+        <mat-card-content>
+            <span>
+                <h3>Name : <span>{{doctorDetails.name}}</span></h3>
+            </span>
+        </mat-card-content>
+
+        <mat-card-content>
+            <span>
+                <h3>Email : <span>{{doctorDetails.email}}</span></h3>
+            </span>
+        </mat-card-content>
+
+        <mat-card-content>
+            <span>
+                <h3>Specialization : <span>{{doctorDetails.dept}}</span></h3>
+            </span>
+        </mat-card-content>
+
+        <mat-card-content>
+            <div *ngFor="let i of doctorAvailablity">
+                <span>
+                    <h3>
+                        Scheduled Availablity : &nbsp; &nbsp; &nbsp;
+                        From : <span>{{i.availablefrom}}</span> &nbsp; &nbsp;
+                        To : <span>{{i.availableTo}}</span>
+                    </h3>                    
+                </span>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+            <a class="button isactive" (click)="add_available()">Upate Your Availablity</a>
+        </mat-card-actions>
+
+    </mat-card>
+</div>
