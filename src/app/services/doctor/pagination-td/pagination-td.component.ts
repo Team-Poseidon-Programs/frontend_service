@@ -149,7 +149,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DialogElementsExampleDialog {
   dialogStatus:any=false;
 
-  constructor(public router:Router,public dialog: MatDialog,public doc:DoctorService){}
+  constructor(public router:Router,public dialog: MatDialog,public doc:DoctorService,private snackbar: MatSnackBar){}
 
   closeHandler(){
     this.dialog.closeAll();
@@ -203,7 +203,7 @@ export class DialogElementsExampleDialog {
 export class DialogElementsForReject {
   dialogStatus:any=false;
 
-  constructor(public dialog: MatDialog,public router:Router,public doc:DoctorService){}
+  constructor(public dialog: MatDialog,public router:Router,public doc:DoctorService,private snackbar: MatSnackBar){}
 
   closeHandler(){
     this.dialog.closeAll();
