@@ -25,12 +25,12 @@ export class HelpbotServiceService {
 
   getcomplaintbyEmail(email: string): Observable<customer_complaint[]>
   {
-    return this.httpclient.get<customer_complaint[]>(`https://localhost:7292/poseidonhc/getcomplaintbyEmail/${email}`)
+    return this.httpclient.get<customer_complaint[]>(`/api/Complaint/GetallCompalins/getcomplaintbyEmail/${email}`)
   }
 
   getallComplain():Observable<customer_complaint[]>
   {
-    return this.httpclient.get<customer_complaint[]>('https://localhost:7292/poseidonhc/GetallCompalins')
+    return this.httpclient.get<customer_complaint[]>('/api/Complaint/GetallCompalins')
   }
   
   addComplaint(complaint: any) {
@@ -44,7 +44,7 @@ export class HelpbotServiceService {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(this.complaints);
 
-    return this.httpclient.post('https://localhost:7292/poseidonhc/addComplaint', body, { headers: headers })
+    return this.httpclient.post('/api/Complaint/addComplaint', body, { headers: headers })
   }
 
 }
