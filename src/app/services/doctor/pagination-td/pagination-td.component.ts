@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { Appointments } from 'src/app/appointments';
 import { Route, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-pagination-td',
   templateUrl: './pagination-td.component.html',
@@ -16,7 +17,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
 
 export class PaginationTdComponent {
-  constructor(public router:Router,public doc:DoctorService,public dialog: MatDialog , public myauth:AuthService){}
+  constructor(public router:Router,public doc:DoctorService,public dialog: MatDialog , public myauth:AuthService, private snackbar: MatSnackBar){}
   appointments = new Array<Appointments>();
   dataSource:any;
 
@@ -157,7 +158,9 @@ export class DialogElementsExampleDialog {
   acceptHandler(){
     console.log('Appointment Accepted',this.doc.appointment_num);
     this.doc.PutAcceptancebyId(this.doc.appointment_num,1).subscribe(response =>{
-      alert(response+"accepted");
+      this.snackbar.open('Appointment accepted ', 'Ok', {
+            duration: 3000,
+          });
       console.log(response);
     this.doc.GetPatientDetailsByID(this.doc.EmailPatientId).subscribe(response=>{
         this.doc.EmailSender(response.email,1).subscribe(response=>{
@@ -209,7 +212,10 @@ export class DialogElementsForReject {
   acceptHandler(){
     console.log('Appointment Rejected',this.doc.appointment_num);
     this.doc.PutAcceptancebyId(this.doc.appointment_num,4).subscribe(response =>{
-      alert(response+"accepted");
+       this.snackbar.open('Appointment Rejected ', 'Ok', {
+            duration: 3000,
+          });
+     
       console.log(response);
       this.doc.GetPatientDetailsByID(this.doc.EmailPatientId).subscribe(response=>{
         this.doc.EmailSender(response.email,4).subscribe(response=>{
