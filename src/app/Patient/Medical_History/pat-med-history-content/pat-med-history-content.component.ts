@@ -34,6 +34,7 @@ export interface visitHistory {
 export class PatMedHistoryContentComponent implements OnInit {
   load: boolean = true;
   show: boolean = false;
+  error:boolean = false;
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -83,9 +84,11 @@ export class PatMedHistoryContentComponent implements OnInit {
       if (this.visitHistoryArray.length != 0) {
         this.load = false;
         this.show = true;
+        this.error=false;
       } else {
         this.load = false;
         this.show = false;
+        this.error=true;
       }
       for (var visit of this.visitHistoryArray) {
         var eachVisit: visitHistory = {
