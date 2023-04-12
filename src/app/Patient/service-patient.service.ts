@@ -215,7 +215,7 @@ export class ServicePatientService {
   tryLogin(details: any) {
     this.email = details.Email;
     this.password = details.password;
-
+    localStorage.setItem('currentUserEmail', patient.email);
     return this.http.get<number>(
       '/api/Patient/patientLogin/' + this.email + '/' + this.password
     );
