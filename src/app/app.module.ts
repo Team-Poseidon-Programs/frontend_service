@@ -120,6 +120,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HelpBotComponent } from './common/help-bot/help-bot.component';
 import { AdminShowComplainsComponent } from './services/admin/admin-show-complains/admin-show-complains.component';
 import { UpdateavailablityComponent } from './services/doctor/updateavailablity/updateavailablity.component';
+import { StringDateFormatterPipe } from './string-date-formatter.pipe';
 
 @NgModule({
   declarations: [
@@ -216,6 +217,7 @@ import { UpdateavailablityComponent } from './services/doctor/updateavailablity/
     HelpBotComponent,
     AdminShowComplainsComponent,
     UpdateavailablityComponent,
+    StringDateFormatterPipe,
   ],
 
   imports: [
