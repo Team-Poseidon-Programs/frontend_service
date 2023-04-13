@@ -24,7 +24,7 @@ export class StringDateFormatterPipe implements PipeTransform {
       }
 
       const datePipe = new DatePipe("en-US");
-      const transformedDate = datePipe.transform(date, "dd/MMM/yyyy");
+      const transformedDate = datePipe.transform(date, "dd-MMM-yyyy");
 
       return transformedDate;
     }
