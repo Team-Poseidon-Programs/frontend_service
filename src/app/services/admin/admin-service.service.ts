@@ -78,31 +78,31 @@ export class AdminServiceService {
 
   // get all patients for admin
   getallPatients(): Observable<Patient_Info[]> {
-    return this.httpclient.get<Patient_Info[]>('http://52.190.40.95/api/Patient/Get_all_Patient');
+    return this.httpclient.get<Patient_Info[]>('https://52.190.40.95/api/Patient/Get_all_Patient');
   }
 
   // get all available doctors
   getAvailableDoctor(): Observable<getAvailableDoc[]> {
-    return this.httpclient.get<getAvailableDoc[]>('http://52.190.40.95/api/DoctorAvailblity/getdocbyStatus/false');
+    return this.httpclient.get<getAvailableDoc[]>('https://52.190.40.95/api/DoctorAvailblity/getdocbyStatus/false');
   }
 
   // get all available doctors
   getAvailableDoctorbyStatus(): Observable<getAvailableDoc[]> {
-    return this.httpclient.get<getAvailableDoc[]>('http://52.190.40.95/api/DoctorAvailblity/getdocbyStatus/true');
+    return this.httpclient.get<getAvailableDoc[]>('https://52.190.40.95/api/DoctorAvailblity/getdocbyStatus/true');
   }
 
   // get doctors by email
   getDoctorsbyEmail(email: string): Observable<getDocbyEmail> {
-    return this.httpclient.get<getDocbyEmail>(`http://52.190.40.95/api/Doctor/particular/${email}`)
+    return this.httpclient.get<getDocbyEmail>(`https://52.190.40.95/api/Doctor/particular/${email}`)
   }
 
   // get available doctors by email
   getDoctorsAvailablebyEmail(email: string): Observable<getAvailableDoc> {
-    return this.httpclient.get<getAvailableDoc>(`http://52.190.40.95/api/DoctorAvailblity/particular/${email}`)
+    return this.httpclient.get<getAvailableDoc>(`https://52.190.40.95/api/DoctorAvailblity/particular/${email}`)
   }
 
   getPhysicianAvailablebyEmail(email: string): Observable<physician_Available>{
-    return this.httpclient.get<physician_Available>(`http://52.190.40.95/api/PhysicianAvailability/FindDoctorByEmailID/${email}`)
+    return this.httpclient.get<physician_Available>(`https://52.190.40.95/api/PhysicianAvailability/FindDoctorByEmailID/${email}`)
   }
 
   // add doctor to physician availability
@@ -114,7 +114,7 @@ export class AdminServiceService {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(this.doctors);
 
-    return this.httpclient.post('http://52.190.40.95/api/PhysicianAvailability/AddPhysicianAvailable', physician, { headers: headers })
+    return this.httpclient.post('https://52.190.40.95/api/PhysicianAvailability/AddPhysicianAvailable', physician, { headers: headers })
   }
 
   // update doctor availability status
@@ -136,7 +136,7 @@ export class AdminServiceService {
     console.log(body);
 
     return this.httpclient
-    .put('http://52.190.40.95/api/DoctorAvailblity/Update/' + this.doctor_avail_status.doctorEmail, body, { headers: headers })
+    .put('https://52.190.40.95/api/DoctorAvailblity/Update/' + this.doctor_avail_status.doctorEmail, body, { headers: headers })
     .pipe(
       tap(() => {
       this._refreshRequired.next();
@@ -153,7 +153,7 @@ export class AdminServiceService {
     const body = JSON.stringify(this.physician_avail);
 
     return this.httpclient
-    .put('http://52.190.40.95/api/PhysicianAvailability/UpdatePhysicianavailability/' + this.physician_avail.physician_email, body, {headers: headers})
+    .put('https://52.190.40.95/api/PhysicianAvailability/UpdatePhysicianavailability/' + this.physician_avail.physician_email, body, {headers: headers})
     .pipe(
       tap(() => {
         this._refreshRequired.next();
@@ -163,7 +163,7 @@ export class AdminServiceService {
 
   deletePhysicianAvailability(email: string)
   {
-    return this.httpclient.delete('http://52.190.40.95/api/PhysicianAvailability/DeletephysicianAvailability/' + email)
+    return this.httpclient.delete('https://52.190.40.95/api/PhysicianAvailability/DeletephysicianAvailability/' + email)
   }
 
   // add doctors
@@ -175,7 +175,7 @@ export class AdminServiceService {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(this.doctors);
 
-    return this.httpclient.post('http://52.190.40.95/api/Doctor/Add', body, { headers: headers })
+    return this.httpclient.post('https://52.190.40.95/api/Doctor/Add', body, { headers: headers })
 
   }
 
@@ -192,7 +192,7 @@ export class AdminServiceService {
     
     // console.log(body1);
 
-    return this.httpclient.post('http://52.190.40.95/api/DoctorAvailblity/Add', body1, {headers: headers})
+    return this.httpclient.post('https://52.190.40.95/api/DoctorAvailblity/Add', body1, {headers: headers})
 
   }
 }
