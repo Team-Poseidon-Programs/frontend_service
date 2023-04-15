@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_9acae9017780482db6f2d4a1ad2910c9 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_fd203ebb4bca4c7d8fb2ad39681a1b52 }}
+        username: ${{ secrets.DOCKERHUB_USERNAME}}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_9acae9017780482db6f2d4a1ad2910c9 }}/poseidon2022/frontend:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/poseidon2022/frontend:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
