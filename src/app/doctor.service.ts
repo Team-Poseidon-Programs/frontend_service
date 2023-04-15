@@ -19,20 +19,17 @@ export class DoctorService {
   constructor(private http:HttpClient) { }
 
   urlAppointment = "https://localhost:7292/poseidonhc";
-
-
-
   
   // This service is to get all the patient appointment details based on acceptance number and doctor email id.
   public GetAppointmentsByAceptanceEmail(id:Number,email:String):Observable<any>{
-    const url = `/api/Appointment/AcceptanceAndEmail/${id}/${email}`;
+    const url = `http://52.190.40.95/api/Appointment/AcceptanceAndEmail/${id}/${email}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/Get_by_ID/11
   // This service is to get the patient detila based on their patient id.
   public GetPatientDetailsByID(id:Number):Observable<any>{
-    const url = `/api/Patient/Get_by_ID/${id}`
+    const url = `http://52.190.40.95/api/Patient/Get_by_ID/${id}`
     return this.http.get<any>(url);
   }
 
@@ -40,7 +37,7 @@ export class DoctorService {
   // https://localhost:7292/poseidonhc/updatebyAppointMentNo/4/1
 
   public PutAcceptancebyId(id:Number,Acceptance:Number):Observable<any>{
-    const url = `/api/Appointment/updatebyAppointMentNo/${id}/${Acceptance}`;
+    const url = `http://52.190.40.95/api/Appointment/updatebyAppointMentNo/${id}/${Acceptance}`;
     return this.http.put<any>(url,null);
     
   }
@@ -49,26 +46,26 @@ export class DoctorService {
   public GetByAcceptanceDoctorEmailDate(AcceptanceNo:number,Date:string,DoctorEmail:string){
     const ogDate = Date.replace("/" ,"%2F")
     const ogDocMail = DoctorEmail.replace(/@/g,"%40")
-    const url = `/api/Appointment/GetByDateAcceptanceNoDoctorEmail?AcceptanceId=${AcceptanceNo}&Date=${ogDate}&DoctorEmail=${ogDocMail}`;
+    const url = `http://52.190.40.95/api/Appointment/GetByDateAcceptanceNoDoctorEmail?AcceptanceId=${AcceptanceNo}&Date=${ogDate}&DoctorEmail=${ogDocMail}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/GetVisitDetailsByAcceptanceId/43
   public GetVisitDetailsByAcceptanceId(AcceptanceID:number){
-    const url = `/api/VisitDetails/GetVisitDetailsByAcceptanceId/${AcceptanceID}`;
+    const url = `http://52.190.40.95/api/VisitDetails/GetVisitDetailsByAcceptanceId/${AcceptanceID}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/allery/84
 
   public GetAllergyDetailsByVisitID(VisitId:number){
-    const url = `/api/allery/${VisitId}`;
+    const url = `http://52.190.40.95/api/allery/${VisitId}`;
     return this.http.get<any>(url);
   }
 
   // https://localhost:7292/poseidonhc/GetTestListbyid/84
   public GetTestResultsByVisitId(VisitId:number){
-    const url = `/api/Test/GetTestListbyid/${VisitId}`
+    const url = `http://52.190.40.95/api/Test/GetTestListbyid/${VisitId}`
     return this.http.get<any>(url);
   }
 
@@ -80,40 +77,40 @@ export class DoctorService {
 
   public PutUpdateTest(TestID:number,TestDetail:TestDetail){
 
-    const url = `/api/Test/UpdateTest/${TestID}`
+    const url = `http://52.190.40.95/api/Test/UpdateTest/${TestID}`
     return this.http.put<any>(url,TestDetail);
 
 
   }
 
   public DeleteTest(testID:number){
-    const url = `/api/Test/DeleteTest/${testID}`
+    const url = `http://52.190.40.95/api/Test/DeleteTest/${testID}`
     return this.http.delete<any>(url);
   }
 
   // /poseidonhc/AddTest
   public AddTest(TestDetails:TestDetail1){
-    const url = `/api/Test/AddTest`
+    const url = `http://52.190.40.95/api/Test/AddTest`
     return this.http.post<any>(url,TestDetails);
   }
 
   // /poseidonhc/GetPrescriptionById/{id}
 
   public ViewPrescription(VisitID:number){
-    const url = `/api/Prescription/GetPrescriptionById/${VisitID}`;
+    const url = `http://52.190.40.95/api/Prescription/GetPrescriptionById/${VisitID}`;
     return this.http.get<any>(url);
   }
   // /poseidonhc/AddPrescription
 
   public AddPriscription(Pres:Prescription){
-    const url = `/api/Prescription/AddPrescription`
+    const url = `http://52.190.40.95/api/Prescription/AddPrescription`
     return this.http.post<any>(url,Pres);
   }
 
   // /poseidonhc/Get_by_ID/{id}
 
   public GetPatientById(patId:number){
-    const url = `/api/Patient/Get_by_ID/${patId}`;
+    const url = `http://52.190.40.95/api/Patient/Get_by_ID/${patId}`;
     return this.http.get<any>(url);
   }
 
@@ -121,7 +118,7 @@ export class DoctorService {
   // poseidonhc/GetVisitDetailsById/{id}
 
   public GetVisitByPatientId(patId:number){
-    const url = `/api/VisitDetails/GetVisitDetailsById/${patId}`;
+    const url = `http://52.190.40.95/api/VisitDetails/GetVisitDetailsById/${patId}`;
     return this.http.get<any>(url);
 
   }
@@ -134,7 +131,7 @@ export class DoctorService {
   // /poseidonhc/sendEmail/{email}/{status}
 
   public EmailSender(Email:string,Status:number){
-    const url = `/api/EmailSender/sendEmail/${Email}/${Status}`
+    const url = `http://52.190.40.95/api/EmailSender/sendEmail/${Email}/${Status}`
     return this.http.post<any>(url,null);
   }
 
@@ -143,7 +140,7 @@ export class DoctorService {
 
   public GetDoctorDetails(Email:string){
     const ogDocMail = Email.replace(/@/g,"%40")
-    const url = `/api/Doctor/particular/${ogDocMail}`;
+    const url = `http://52.190.40.95/api/Doctor/particular/${ogDocMail}`;
     return this.http.get<any>(url);
   }
 
@@ -151,7 +148,7 @@ export class DoctorService {
 
   public GetDoctorAvailablityByEmail(Email:string){
     const ogDocMail = Email.replace(/@/g,"%40")
-    const url = `/api/PhysicianAvailability/FindDoctorByEmailID/${ogDocMail}`;
+    const url = `http://52.190.40.95/api/PhysicianAvailability/FindDoctorByEmailID/${ogDocMail}`;
     return this.http.get<any>(url);
 
   }

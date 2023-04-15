@@ -178,7 +178,7 @@ export class ServicePatientService {
     const body = JSON.stringify(this.patientDet);
     console.log(body);
     return this.http
-      .post('/api/Patient/Add_Patient', body, { headers: headers })
+      .post('http://52.190.40.95/api/Patient/Add_Patient', body, { headers: headers })
       .pipe(
         tap(() => {
           this._refreshRequired.next();
@@ -188,7 +188,7 @@ export class ServicePatientService {
 
   //DETAILS FOR PROFILE PAGE AFTER LOGIN
   getDetailsForProfile(id: number) {
-    return this.http.get<patientObj>('/api/Patient/Get_by_ID/' + id);
+    return this.http.get<patientObj>('http://52.190.40.95/api/Patient/Get_by_ID/' + id);
   }
 
   //UPDATE USER DETAILS
@@ -202,7 +202,7 @@ export class ServicePatientService {
 
     console.log(body);
     return this.http
-      .put('/api/Patient/Update_Patient/' + id, body, {
+      .put('http://52.190.40.95/api/Patient/Update_Patient/' + id, body, {
         headers: headers,
       })
       .pipe(
@@ -217,18 +217,18 @@ export class ServicePatientService {
     this.password = details.password;
     localStorage.setItem('currentUserEmail', this.email);
     return this.http.get<number>(
-      '/api/Patient/patientLogin/' + this.email + '/' + this.password
+      'http://52.190.40.95/api/Patient/patientLogin/' + this.email + '/' + this.password
     );
   }
 
   //APPOINTMENT HISTORY
   public getAppointmentHistory(id: number): Observable<any> {
-    return this.http.get('/api/Appointment/GetbyPatientID/' + id);
+    return this.http.get('http://52.190.40.95/api/Appointment/GetbyPatientID/' + id);
   }
 
   //AVAILABLE DOCTORS LIST
   public getAllAvailableDoctors() {
-    return this.http.get('/api/PhysicianAvailability/Get_All_Physicians');
+    return this.http.get('http://52.190.40.95/api/PhysicianAvailability/Get_All_Physicians');
   }
 
   public setAppointments(appointmentData: appointment) {
@@ -243,46 +243,46 @@ export class ServicePatientService {
     this.currentAppointment.reason = reason.reason;
     var headers = { 'content-type': 'application/json' };
     var body = JSON.stringify(this.currentAppointment);
-    return this.http.post('/api/Appointment/Add_appointment', body, {
+    return this.http.post('http://52.190.40.95/api/Appointment/Add_appointment', body, {
       headers: headers,
     });
   }
 
   public getMedicalHistory() {
     var currentUserId = JSON.parse(localStorage.getItem('LoggedInUserId')!);
-    return this.http.get('/api/VisitDetails/GetVisitDetailsById/' + currentUserId);
+    return this.http.get('http://52.190.40.95/api/VisitDetails/GetVisitDetailsById/' + currentUserId);
   }
 
   public getTestForAVisit(id: number) {
-    return this.http.get('/api/Test/GetTestListbyid/' + id);
+    return this.http.get('http://52.190.40.95/api/Test/GetTestListbyid/' + id);
   }
 
   public getPrescription(id: number) {
-    return this.http.get('/api/Prescription/GetPrescriptionById/' + id);
+    return this.http.get('http://52.190.40.95/api/Prescription/GetPrescriptionById/' + id);
   }
 
   public getVitals(id: number) {
-    return this.http.get<visitDetail>('/api/VisitDetails/GetParticularVisitDetailsById/' + id);
+    return this.http.get<visitDetail>('http://52.190.40.95/api/VisitDetails/GetParticularVisitDetailsById/' + id);
   }
 
   public getAllergies(id: number) {
-    return this.http.get('/api/Allergy/Fetch/' + id);
+    return this.http.get('http://52.190.40.95/api/Allergy/Fetch/' + id);
   }
 
   public sendBookedEmail() {
     var headers = { 'content-type': 'application/json' };
     var body = '';
     var toMail = localStorage.getItem('currentUserEmail');
-    return this.http.post('/api/EmailSender/sendEmail/' + toMail + '/' + 0,
+    return this.http.post('http://52.190.40.95/api/EmailSender/sendEmail/' + toMail + '/' + 0,
       body,
       { headers: headers }
     );
   }
 
   public isExistEmail(email: string) {
-    return this.http.get('/api/Patient/PatientExist/' + email);
+    return this.http.get('http://52.190.40.95/api/Patient/PatientExist/' + email);
   }
   public isExistPhone(phone: string) {
-    return this.http.get('/api/Patient/phoneNo/isExist/' + phone);
+    return this.http.get('http://52.190.40.95/api/Patient/phoneNo/isExist/' + phone);
   }
 }
