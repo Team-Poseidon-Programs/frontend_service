@@ -35,32 +35,33 @@ export class PatAppointmentHistoryTableComponent
     // });
   }
 
-  
-  
+
+
   // history: appointmentHistory[] = [
-    //   { Id: 1, Date: "18-Mar-2023", Doctor: "Andrews", Notes: "Eye", Status: "Pending" },
-    //   { Id: 2, Date: "18-Mar-2023", Doctor: "George", Notes: "fever", Status: "Completed" },
-    //   { Id: 3, Date: "18-Mar-2023", Doctor: "sheena", Notes: "tongue", Status: "Approved" },
-    //   { Id: 4, Date: "19-Mar-2023", Doctor: "Tyler", Notes: "Root Canal", Status: "Rejected" },
-    //   { Id: 5, Date: "19-Mar-2023", Doctor: "Shawn", Notes: "Root Canal", Status: "Rejected" },
+  //   { Id: 1, Date: "18-Mar-2023", Doctor: "Andrews", Notes: "Eye", Status: "Pending" },
+  //   { Id: 2, Date: "18-Mar-2023", Doctor: "George", Notes: "fever", Status: "Completed" },
+  //   { Id: 3, Date: "18-Mar-2023", Doctor: "sheena", Notes: "tongue", Status: "Approved" },
+  //   { Id: 4, Date: "19-Mar-2023", Doctor: "Tyler", Notes: "Root Canal", Status: "Rejected" },
+  //   { Id: 5, Date: "19-Mar-2023", Doctor: "Shawn", Notes: "Root Canal", Status: "Rejected" },
   //   {Id:6,Date:"19-Mar-2023",Doctor:"Lopez",Notes:"Stomach ache",Status:"Accepted"},
   // ];
 
   //appointmentStatus = new MatTableDataSource(this.history);
 
-  
+
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('LoggedInUserId')!);
 
     this.getAppointmentHistory(this.currentUser);
   }
-  
+
   idArray: number[] = [];
-  
+
   getAppointmentHistory(id: number) {
     this.service.getAppointmentHistory(id).subscribe((data) => {
       this.listOfAppointment = data;
-      
+
+      this.dataSource = new MatTableDataSource(this.listOfAppointment);
       if (this.listOfAppointment.length != 0) {
         console.log(this.listOfAppointment.length);
         this.load = false;
@@ -71,15 +72,12 @@ export class PatAppointmentHistoryTableComponent
         this.load = false;
         this.empty = true;
       }
-      
-      this.dataSource = new MatTableDataSource(this.listOfAppointment);
       this.dataSource.paginator = this.paginator;
       console.log('list of appointment', this.dataSource);
     });
   }
-
   displayedColumns: string[] = ['Id', 'Date', 'Doctor', 'Notes', 'Status'];
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
