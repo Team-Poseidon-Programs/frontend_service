@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { items, ServicePatientService } from '../../service-patient.service';
 import { HttpClient } from '@angular/common/http';
@@ -19,8 +20,8 @@ export interface appointmentHistory {
   styleUrls: ['./pat-appointment-history-table.component.css'],
 })
 export class PatAppointmentHistoryTableComponent
-  implements OnInit, AfterViewInit
-{
+  implements OnInit, AfterViewInit {
+
   listOfAppointment!: items[];
   dataSource: any;
   currentUser: any;
@@ -34,33 +35,32 @@ export class PatAppointmentHistoryTableComponent
     // });
   }
 
-  @ViewChild('paginator') paginator: MatPaginator;
-
+  
+  
   // history: appointmentHistory[] = [
-  //   { Id: 1, Date: "18-Mar-2023", Doctor: "Andrews", Notes: "Eye", Status: "Pending" },
-  //   { Id: 2, Date: "18-Mar-2023", Doctor: "George", Notes: "fever", Status: "Completed" },
-  //   { Id: 3, Date: "18-Mar-2023", Doctor: "sheena", Notes: "tongue", Status: "Approved" },
-  //   { Id: 4, Date: "19-Mar-2023", Doctor: "Tyler", Notes: "Root Canal", Status: "Rejected" },
-  //   { Id: 5, Date: "19-Mar-2023", Doctor: "Shawn", Notes: "Root Canal", Status: "Rejected" },
+    //   { Id: 1, Date: "18-Mar-2023", Doctor: "Andrews", Notes: "Eye", Status: "Pending" },
+    //   { Id: 2, Date: "18-Mar-2023", Doctor: "George", Notes: "fever", Status: "Completed" },
+    //   { Id: 3, Date: "18-Mar-2023", Doctor: "sheena", Notes: "tongue", Status: "Approved" },
+    //   { Id: 4, Date: "19-Mar-2023", Doctor: "Tyler", Notes: "Root Canal", Status: "Rejected" },
+    //   { Id: 5, Date: "19-Mar-2023", Doctor: "Shawn", Notes: "Root Canal", Status: "Rejected" },
   //   {Id:6,Date:"19-Mar-2023",Doctor:"Lopez",Notes:"Stomach ache",Status:"Accepted"},
   // ];
 
   //appointmentStatus = new MatTableDataSource(this.history);
 
-  displayedColumns: string[] = ['Id', 'Date', 'Doctor', 'Notes', 'Status'];
-
+  
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('LoggedInUserId')!);
 
     this.getAppointmentHistory(this.currentUser);
   }
-
+  
   idArray: number[] = [];
-
+  
   getAppointmentHistory(id: number) {
     this.service.getAppointmentHistory(id).subscribe((data) => {
       this.listOfAppointment = data;
-
+      
       this.dataSource = new MatTableDataSource(this.listOfAppointment);
       if (this.listOfAppointment.length != 0) {
         console.log(this.listOfAppointment.length);
@@ -76,6 +76,11 @@ export class PatAppointmentHistoryTableComponent
       console.log('list of appointment', this.dataSource);
     });
   }
+  
+  displayedColumns: string[] = ['Id', 'Date', 'Doctor', 'Notes', 'Status'];
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
