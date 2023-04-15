@@ -61,7 +61,6 @@ export class PatAppointmentHistoryTableComponent
     this.service.getAppointmentHistory(id).subscribe((data) => {
       this.listOfAppointment = data;
       
-      this.dataSource = new MatTableDataSource(this.listOfAppointment);
       if (this.listOfAppointment.length != 0) {
         console.log(this.listOfAppointment.length);
         this.load = false;
@@ -72,11 +71,13 @@ export class PatAppointmentHistoryTableComponent
         this.load = false;
         this.empty = true;
       }
+      
+      this.dataSource = new MatTableDataSource(this.listOfAppointment);
       this.dataSource.paginator = this.paginator;
       console.log('list of appointment', this.dataSource);
     });
   }
-  
+
   displayedColumns: string[] = ['Id', 'Date', 'Doctor', 'Notes', 'Status'];
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
