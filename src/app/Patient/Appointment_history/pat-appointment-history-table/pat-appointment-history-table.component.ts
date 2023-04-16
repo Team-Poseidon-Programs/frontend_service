@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { items, ServicePatientService } from '../../service-patient.service';
 import { HttpClient } from '@angular/common/http';
@@ -20,8 +19,8 @@ export interface appointmentHistory {
   styleUrls: ['./pat-appointment-history-table.component.css'],
 })
 export class PatAppointmentHistoryTableComponent
-  implements OnInit, AfterViewInit {
-
+  implements OnInit, AfterViewInit
+{
   listOfAppointment!: items[];
   dataSource: any;
   currentUser: any;
@@ -35,7 +34,7 @@ export class PatAppointmentHistoryTableComponent
     // });
   }
 
-
+  @ViewChild('paginator') paginator: MatPaginator;
 
   // history: appointmentHistory[] = [
   //   { Id: 1, Date: "18-Mar-2023", Doctor: "Andrews", Notes: "Eye", Status: "Pending" },
@@ -48,6 +47,7 @@ export class PatAppointmentHistoryTableComponent
 
   //appointmentStatus = new MatTableDataSource(this.history);
 
+  displayedColumns: string[] = ['Id', 'Date', 'Doctor', 'Notes', 'Status'];
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('LoggedInUserId')!);
@@ -76,10 +76,6 @@ export class PatAppointmentHistoryTableComponent
       console.log('list of appointment', this.dataSource);
     });
   }
-  displayedColumns: string[] = ['Id', 'Date', 'Doctor', 'Notes', 'Status'];
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.

@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import moment from 'moment';
 import { HelpbotServiceService, customer_complaint } from './helpbot-service.service';
 import { Router } from '@angular/router';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -14,43 +13,44 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 export class HelpBotComponent implements OnInit {
 
   constructor(private service: HelpbotServiceService,
-    private router: Router,
-    private snackbar: MatSnackBar) { }
+    private router: Router) {}
 
   cus_complain: customer_complaint = {
     patientEmail: '',
     complaint: '',
     date: ''
-  }
+  } 
 
   email: string;
   complain: string;
 
   ngOnInit(): void {
-
-
+    
+   
   }
 
   todaydate: Date;
 
   tdate: string;
 
-  onSubmit() {
+  onSubmit()
+  {
     console.log(this.email);
     console.log(this.complain);
 
     this.todaydate = new Date();
-    this.tdate = moment(this.todaydate).format('DD/MM/YYYY');
+    this.tdate = moment(this.todaydate).format('DD/MM/YYYY');    
 
     this.cus_complain.patientEmail = this.email;
     this.cus_complain.complaint = this.complain;
     this.cus_complain.date = this.tdate;
-
+    
     this.service.addComplaint(this.cus_complain).subscribe(res => {
       console.log(res);
 
-      this.snackbar.open('Complaint submit successfully', 'Ok', {
-        duration: 3000
+      this.router.navigateByUrl('', {skipLocationChange: true}).then(() => 
+      {
+        this.router.navigate(['login_page'])
       })
     })
   }
