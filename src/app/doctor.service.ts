@@ -59,7 +59,7 @@ export class DoctorService {
   // https://localhost:7292/poseidonhc/allery/84
 
   public GetAllergyDetailsByVisitID(VisitId:number){
-    const url = `https://52.190.40.95/api/allery/${VisitId}`;
+    const url = `https://52.190.40.95/api/Allergy/Fetch/${VisitId}`;
     return this.http.get<any>(url);
   }
 
