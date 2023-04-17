@@ -1,7 +1,7 @@
 <!-- <h1 mat-dialog-title class="dtitle">New Availability</h1> -->
 <form>
     <p>Scheduled From</p>
-    <p> {{phyFromDate}} - {{phyToDate}}</p>
+    <p> {{phyFromDate | stringDateFormatter}} - {{phyToDate | stringDateFormatter}}</p>
     <div mat-dialog-content>
         <div class="det-box">
             <mat-form-field appearance="fill">

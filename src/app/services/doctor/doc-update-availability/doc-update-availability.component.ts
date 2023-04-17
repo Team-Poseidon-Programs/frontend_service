@@ -87,9 +87,11 @@ export class DocUpdateAvailabilityComponent {
 
     this.service.updateDocAvailStatus(this.doctors).subscribe(res => {
       console.log(res);
+      
+      this.service.deletePhysicianAvailability(this.doctors.doctorEmail).subscribe(data => {
+        console.log(data);
+      })
       this.openSnackBar();
-
-
     })
 
 

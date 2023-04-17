@@ -27,7 +27,6 @@ export class UpdateavailablityComponent {
     this.doc.GetDoctorAvailablityByEmail(this.doc.Doctor_name).subscribe(Response =>{
       console.log(Response);
       this.doctorAvailablity = Response;
-
     })
   }
   add_available()
