@@ -12,9 +12,17 @@
         <a  #inner>
         <app-login-logout></app-login-logout>
         </a>
+        <h3>Hospital Services</h3>
 
     </mat-card>
     </div>
+    <div (click)="innerClickPatient()" class="card-block">
+        <mat-card class="card-btn">
+            <a #inner>Login</a>
+            <h3>Patient Services</h3>
+    
+        </mat-card>
+        </div>
     <div>
     <h3 class="home-txt">Kindly Login</h3>
     </div>

@@ -59,6 +59,7 @@ export class LoginFormComponentComponent {
           this.snackbar.open('Successfully Logged in', 'Ok', {
             duration: 3000,
           });
+          this.service.isPatientLoggedIn =true;
           this.router.navigate(['patient_profile']);
         } else {
           this.snackbar.open('Logged in failed', 'Ok', {

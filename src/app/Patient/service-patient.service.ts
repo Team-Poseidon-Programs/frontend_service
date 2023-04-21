@@ -106,6 +106,8 @@ export class ServicePatientService {
   newVitals: any;
   newAllergy: any;
 
+  isPatientLoggedIn:boolean=false;
+
   patientDet: patientObj = {
     email: '',
     title: '',
