@@ -30,7 +30,7 @@ export class AdminShowComplainsComponent implements OnInit {
       this.complains = data;
       console.log(data);
 
-      this.dataSource = new MatTableDataSource(this.complains);
+      this.dataSource = new MatTableDataSource(this.complains.reverse());
       this.dataSource.paginator = this.paginator;
     })
   }
