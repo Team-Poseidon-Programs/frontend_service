@@ -136,7 +136,6 @@ export class PatAppointmentContentComponent implements OnInit {
         console.log('book ' + this.bookDate);
 
         if (this.bookDate >= AvailFrom && this.bookDate <= AvailTo) {
-          this.load = false;
           this.show = true;
           console.log(doctor.physician_email);
           var doctors: availability = {
@@ -153,6 +152,9 @@ export class PatAppointmentContentComponent implements OnInit {
         if (this.doctorsList.length == 0) {
           this.load = false;
           this.show = false;
+        }
+        if(this.doctorsList.length >1){
+        this.load=false;
         }
       }
     });
