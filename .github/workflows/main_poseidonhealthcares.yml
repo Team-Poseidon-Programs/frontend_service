@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_29331b146c784d2fb2bff1ec05ec5e95 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_a45982771857471dbbd7fb6e8fffa696 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_82670ef3e2ee40d2a8039411b23eb4d2 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_083554921ec944e5b289490387eac3f0 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_29331b146c784d2fb2bff1ec05ec5e95 }}/frontend:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_82670ef3e2ee40d2a8039411b23eb4d2 }}/frontend:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'poseidonhealthcares'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_03a9bff4e60d45398b6f108e786a2cf2 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_29331b146c784d2fb2bff1ec05ec5e95 }}/frontend:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b6dbdeca74514c778939d1ab68cd3fac }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_82670ef3e2ee40d2a8039411b23eb4d2 }}/frontend:${{ github.sha }}'
