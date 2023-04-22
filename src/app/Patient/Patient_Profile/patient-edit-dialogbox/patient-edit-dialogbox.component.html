@@ -21,7 +21,6 @@
         (change)="getValue(Address)" pattern="\w{3,50}">
     </mat-form-field>
 
-
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
       <input type="password" name="password" matInput ngModel #password='ngModel' (change)="getValue(password.value)"
@@ -29,7 +28,6 @@
       <mat-error *ngIf="password.touched && (password.invalid||password.errors?.pattern)">Invalid password
         format</mat-error>
     </mat-form-field>
-
 
     <mat-form-field appearance="outline">
       <mat-label>Confirm Password</mat-label>
@@ -47,7 +45,7 @@
       (click)="onNoClick()"><span>Update</span></button>
     <button mat-button class="update-buttons" *ngIf="password.valid && Confirmpassword.valid && passMatch" type="submit"
       (click)="onNoClick()"><span>Update</span></button>
-    <button mat-button class="back-buttons" (click)="onNoClick()"><span>Back</span></button>
+    <button mat-button class="back-buttons" type="button" (click)="onNoClick()"><span>Back</span></button>
 
   </form>
 </div>

@@ -45,7 +45,8 @@ h1 {
 h3 {
     font-family: 'montserrat';
     color: #444343;
-    margin: 50px;
+    margin-top: 5%;
+    margin-left: 4%;
     font-weight: bold;
 }
 
@@ -53,7 +54,7 @@ h4 {
     font-family: 'montserrat';
     color: #444343;
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 4%;
 }
 
 .date-box {
@@ -62,8 +63,6 @@ h4 {
 
 
 }
-
-
 .table-box {
 
     width: 93%;
@@ -99,4 +98,22 @@ h4 {
     font-weight: bold;
     color: white;
     background-color: #444343;
+}
+
+th {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}
+
+td {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}
+
+mat-paginator {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
 }
