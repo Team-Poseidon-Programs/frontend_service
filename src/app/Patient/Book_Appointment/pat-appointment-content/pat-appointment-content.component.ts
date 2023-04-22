@@ -136,6 +136,7 @@ export class PatAppointmentContentComponent implements OnInit {
         console.log('book ' + this.bookDate);
 
         if (this.bookDate >= AvailFrom && this.bookDate <= AvailTo) {
+          this.load = false;
           this.show = true;
           console.log(doctor.physician_email);
           var doctors: availability = {
