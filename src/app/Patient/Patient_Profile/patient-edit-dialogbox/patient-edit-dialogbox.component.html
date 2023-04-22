@@ -3,25 +3,50 @@
   <form #f='ngForm' (submit)="onSubmit(f.value)">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input type="email" name="email" matInput ngModel #Email='ngModel'  [(ngModel)]="email" (change)="getValue(Email)"
+      <input type="email" name="email" matInput ngModel #Email='ngModel' [(ngModel)]="email" (change)="getValue(Email)"
         pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-z]{2,6}$">
       <mat-error *ngIf="Email.touched && (Email.invalid||Email.errors?.pattern)">Invalid email format</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="outline">
       <mat-label>Phone</mat-label>
-      <input type="tel" name="contactNumber"matInput ngModel #phone='ngModel' [(ngModel)]="phoneNo"  (change)="getValue(phone)"
-        pattern="^[9876]\d{9}$">
+      <input type="tel" name="contactNumber" matInput ngModel #phone='ngModel' [(ngModel)]="phoneNo"
+        (change)="getValue(phone)" pattern="^[9876]\d{9}$">
       <mat-error *ngIf="phone.touched && (phone.invalid||phone.errors?.pattern)">Invalid phone number format</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="outline">
       <mat-label>Address</mat-label>
-      <input type="text" name="address" matInput ngModel #Address='ngModel' [(ngModel)]="add" (change)="getValue(Address)"
-        pattern="\w{3,50}">
+      <input type="text" name="address" matInput ngModel #Address='ngModel' [(ngModel)]="add"
+        (change)="getValue(Address)" pattern="\w{3,50}">
     </mat-form-field>
 
-    <button mat-button class="update-buttons" type="submit" (click)="onNoClick()"><span>Update</span></button>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" name="password" matInput ngModel #password='ngModel' (change)="getValue(password.value)"
+        (change)="checkPassword()" [(ngModel)]="newPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$">
+      <mat-error *ngIf="password.touched && (password.invalid||password.errors?.pattern)">Invalid password
+        format</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input type="password" name="Confirmpassword" id="cPass" matInput ngModel #Confirmpassword='ngModel'
+        [(ngModel)]="confirmPassword" (change)='getValue(Confirmpassword.value)' (change)="checkPassword()">
+      <!-- <mat-error *ngIf="Confirmpassword.touched && (Confirmpassword.invalid ||Confirmpassword.errors?.pattern)">Invalid
+                  password format</mat-error> -->
+      <mat-error
+        *ngIf="Confirmpassword.errors?.passwordChecker &&(Confirmpassword.dirty||Confirmpassword.touched)">passwords are
+        not matching</mat-error>
+    </mat-form-field>
+
+
+    <button mat-button disabled class="update-buttons" *ngIf="password.invalid || Confirmpassword.invalid ||!passMatch"
+      (click)="onNoClick()"><span>Update</span></button>
+    <button mat-button class="update-buttons" *ngIf="password.valid && Confirmpassword.valid && passMatch" type="submit"
+      (click)="onNoClick()"><span>Update</span></button>
     <button mat-button class="back-buttons" (click)="onNoClick()"><span>Back</span></button>
 
   </form>

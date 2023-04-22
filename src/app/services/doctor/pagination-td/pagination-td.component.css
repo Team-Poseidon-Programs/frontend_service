@@ -3,9 +3,9 @@ table {
     margin-left: 10px;
 }
 
-.mat-elevation-z8{
+.mat-elevation-z8 {
     margin-left: 5%;
-    margin-right: 5%;   
+    margin-right: 5%;
 }
 
 a {
@@ -36,14 +36,35 @@ a:hover {
     border-radius: 50px;
     color: white;
 }
-.dv{
+
+.dv {
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
 }
-.d{
+
+.d {
     padding-top: 10px;
 }
-.b{
+
+.b {
     padding-bottom: 10px;
+}
+
+th {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}
+
+td {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
+}
+
+mat-paginator {
+    font-family: 'montserrat';
+    font-weight: bold;
+    color: #444343;
 }

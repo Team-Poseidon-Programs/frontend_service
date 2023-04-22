@@ -10,6 +10,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ServicePatientService } from '../../service-patient.service';
 import { catchError, throwError, pipe } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 export interface patientObj {
   email: string;
@@ -29,11 +31,16 @@ export interface patientObj {
   styleUrls: ['./patient-edit-dialogbox.component.css'],
 })
 export class PatientEditDialogboxComponent implements OnInit {
+  newPassword: string;
+  confirmPassword: string;
+  passMatch: boolean = true;
+
   constructor(
     private dialogRef: MatDialogRef<PatientEditDialogboxComponent>,
     private service: ServicePatientService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private snackbar: MatSnackBar
+  ) { }
 
   patientData: patientObj;
   email: string;
@@ -48,6 +55,8 @@ export class PatientEditDialogboxComponent implements OnInit {
       this.email = this.patientData.email;
       this.phoneNo = this.patientData.contactNumber;
       this.add = this.patientData.address;
+      this.newPassword = this.patientData.password;
+      this.confirmPassword = this.patientData.password;
       console.log(this.email);
     });
   }
@@ -57,6 +66,7 @@ export class PatientEditDialogboxComponent implements OnInit {
     this.patientData.address = this.add;
     this.patientData.email = this.email;
     this.patientData.contactNumber = this.phoneNo;
+    this.patientData.password = this.confirmPassword;
     this.service
       .updatePersonalDetails(this.currentUser, this.patientData)
       .pipe(
@@ -77,9 +87,24 @@ export class PatientEditDialogboxComponent implements OnInit {
       });
     console.log(this.patientData);
   }
-  getValue(f: any) {}
+  getValue(f: any) { }
 
   onNoClick() {
     this.dialogRef.close();
+  }
+
+  checkPassword() {
+    if (this.confirmPassword.length != 0) {
+      if (this.confirmPassword != this.newPassword) {
+        this.passMatch = false;
+        console.log('passwords not matching');
+        this.snackbar.open('passwords are not matching', 'Ok', {
+          duration: 3000,
+        });
+      } else {
+        this.passMatch = true;
+        console.log('passwords matching');
+      }
+    }
   }
 }

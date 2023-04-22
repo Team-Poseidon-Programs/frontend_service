@@ -1,5 +1,23 @@
-.frdate{
+/* .frdate{
     padding-top:5%;
     padding-left: 5%;
+} */
 
+h2 {
+    margin-top: 5%;
+    margin-left: 4%;
+    color: #444343;
+    font-family: 'montserrat';
+    font-weight: bold;
+    /* text-align: center; */
+    font-size: large;
+}
+
+h4 {
+    margin-left: 4%;
+    color: #444343;
+    font-family: 'montserrat';
+    font-weight: bold;
+    /* text-align: center; */
+    font-size: large;
 }
