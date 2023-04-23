@@ -17,7 +17,12 @@ export class DocMedInfoEditDialogComponent {
   notes:string;
 constructor(private dialog: MatDialogRef<DocMedInfoEditDialogComponent>,public doc:DoctorService,public router:Router) {}
 
-
+ngOnInit(){
+  this.test = this.doc.patientTestDetails.testName;
+  this.result = this.doc.patientTestDetails.result;
+  this.notes = this.doc.patientTestDetails.notes;
+  console.log(this.doc.patientTestDetails)
+}
 
    onSubmit(f: any) {
     const TestDetails=  new TestDetail(this.doc.VisitId,f.Test,f.Result,f.Notes);

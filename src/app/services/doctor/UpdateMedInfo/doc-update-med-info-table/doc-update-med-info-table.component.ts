@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DocMedInfoEditDialogComponent } from '../doc-med-info-edit-dialog/doc-med-info-edit-dialog.component';
 import { DoctorService } from 'src/app/doctor.service';
 import { Router } from '@angular/router';
+import { publish } from 'rxjs-compat/operator/publish';
 
 export interface tests{
   Id: number;
@@ -59,11 +60,15 @@ export class DocUpdateMedInfoTableComponent {
   }
   
  
-    openEditObservation(testId:number) {
+    openEditObservation(testId:number,tname:string,tnote:string,tres:string) {
       console.log(testId)
       this.doc.TestId = testId;
+      const myObj:TestObservation = new TestObservation(testId,tname,tnote,tres);
+      this.doc.patientTestDetails = myObj;
        const prescription = this.dialog.open(DocMedInfoEditDialogComponent, {
-      data: {},
+      data: {
+        mydate:myObj
+      },
       width: '40%'
     });
   }
@@ -80,3 +85,18 @@ export class DocUpdateMedInfoTableComponent {
   }
 
 
+// export class Test	Notes	Result
+
+export class TestObservation{
+  id:number
+  testName:string;
+  notes:string;
+  result:string;
+
+  constructor(Id:number,tname:string,note:string,res:string){
+    this.id = Id,
+    this.testName = tname;
+    this.notes = note;
+    this.result = res;
+  }
+}

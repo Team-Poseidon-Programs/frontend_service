@@ -3,19 +3,19 @@
     <form #f='ngForm' (submit)="onSubmit(f.value)">
         <mat-form-field appearance="outline">
             <mat-label>Test</mat-label>
-            <input type="text" name="Test" matInput ngModel #Test='ngModel' (change)="getValue(Test)">
+            <input type="text" name="Test" [(ngModel)]="test" matInput ngModel #Test='ngModel' (change)="getValue(Test)">
             <mat-error *ngIf="Test.touched && Test.invalid">Invalid email format</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline">
             <mat-label>Result</mat-label>
-            <input type="text" name="Result" matInput ngModel #Result='ngModel' (change)="getValue(Result)">
+            <input type="text" name="Result"  [(ngModel)]="result" matInput ngModel #Result='ngModel' (change)="getValue(Result)">
             <mat-error *ngIf="Result.touched && Result.invalid">Invalid email format</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline">
             <mat-label>Notes</mat-label>
-            <input type="text" name="Notes" matInput ngModel #Notes='ngModel' (change)="getValue(Notes)">
+            <input type="text" name="Notes" [(ngModel)]="notes" matInput ngModel #Notes='ngModel' (change)="getValue(Notes)">
             <mat-error *ngIf="Notes.touched && Notes.invalid">Invalid email format</mat-error>
         </mat-form-field>
 

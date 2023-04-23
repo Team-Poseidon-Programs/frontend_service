@@ -5,6 +5,7 @@ import { Appointments } from './appointments';
 import { TestDetail } from './services/doctor/UpdateMedInfo/doc-med-info-edit-dialog/doc-med-info-edit-dialog.component';
 import { TestDetail1 } from './services/doctor/UpdateMedInfo/doc-add-test-dialog/doc-add-test-dialog.component';
 import { Prescription } from './services/doctor/UpdateMedInfo/doc-med-info-add-prescription-dialog/doc-med-info-add-prescription-dialog.component';
+import { TestObservation } from './services/doctor/UpdateMedInfo/doc-update-med-info-table/doc-update-med-info-table.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +17,7 @@ export class DoctorService {
   pageRefresh:boolean = false;
   PatientId:number;
   EmailPatientId:number;
+  patientTestDetails:TestObservation;
   constructor(private http:HttpClient) { }
 
   urlAppointment = "https://localhost:7292/poseidonhc";
