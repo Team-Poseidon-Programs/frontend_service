@@ -47,8 +47,8 @@ const routes: Routes = [
   { path: 'login_page', component: LoginComponentComponent },
   { path: 'signin_page', component: SigninComponentComponent },
   { path: 'nurse_home', component: NursehomeComponent },
-  { path: 'adminprofile', component: AdminhomeComponent,canActivate:[AuthGuard] },
-  { path: 'nurse_profile', component: NursehomeComponent,canActivate:[AuthGuard] },
+  { path: 'adminprofile', component: AdminhomeComponent, canActivate: [AuthGuard] },
+  { path: 'nurse_profile', component: NursehomeComponent, canActivate: [AuthGuard] },
   { path: 'adminhome', component: AdminprofileComponent, canActivate: [AuthGuard] },
   { path: 'doctorhome', component: DoctorProfileComponent, canActivate: [AuthGuard] },
   // { path: 'nursehome', component: NurseProfilePageComponent,canActivate:[AuthGuard] },
@@ -56,10 +56,10 @@ const routes: Routes = [
   { path: 'doctdapp', component: DoctorTodayappointmentComponent, canActivate: [AuthGuard] },
   { path: 'nursehome', component: NurseProfilePageComponent, canActivate: [AuthGuard] },
   { path: 'dochome', component: DoctorhomeComponent },
-  { path: 'patient_profile', component: PatientProfileHomeComponent, canActivate:[AuthGuard] },
-  { path: 'patient_book_app', component: PatientBookAppointmentComponent,canActivate:[AuthGuard] },
-  { path: 'nurse_appointment', component: NurseAppointmentContentComponent,canActivate:[AuthGuard] },
-  { path: 'admin_schedule', component: AdminScheduleComponent,canActivate:[AuthGuard] },
+  { path: 'patient_profile', component: PatientProfileHomeComponent, canActivate: [AuthGuard] },
+  { path: 'patient_book_app', component: PatientBookAppointmentComponent, canActivate: [AuthGuard] },
+  { path: 'nurse_appointment', component: NurseAppointmentContentComponent, canActivate: [AuthGuard] },
+  { path: 'admin_schedule', component: AdminScheduleComponent, canActivate: [AuthGuard] },
   { path: 'docacceptedappointments', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'patient_medHistory', component: PatMedHistoryComponent },
   { path: 'patient_appointmentHistory', component: PatAppointmentHistoryComponent },
@@ -70,8 +70,8 @@ const routes: Routes = [
   { path: 'admin_add_doc', component: AdminAddDoctorComponent },
   { path: 'nurse-pat-info', component: NursePatHomeComponent },
   { path: 'admin-available-doc', component: AdminAvailableDoctorComponent },
-  { path: 'admin-show-complain', component: AdminShowComplainsComponent},
-  {path:'docotorupdateavailablity',component:UpdateavailablityComponent}
+  { path: 'admin-show-complain', component: AdminShowComplainsComponent },
+  { path: 'docotorupdateavailablity', component: UpdateavailablityComponent }
 
 ]
 
@@ -79,6 +79,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {
   constructor(public myauth: AuthorizationService) { }
 }
