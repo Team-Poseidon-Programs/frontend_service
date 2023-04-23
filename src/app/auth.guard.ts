@@ -19,21 +19,22 @@ export class AuthGuard implements CanActivate {
    
    const { path } = routeConfig as Route; 
 
-   if (path?.includes('adminhome') || path?.includes('adminprofile') || path?.includes('admin_schedule') && this.myauth.authour==='admin.com' ) {
+   if ((path?.includes('adminhome') || path?.includes('admin_schedule')) && (this.myauth.authour==='admin.com')) {
  
       return true;
     }
 
-    if ((path?.includes('doctorhome') || path?.includes('doctdapp') || path?.includes('docacceptedappointments')) && this.myauth.authour==='doctor.com' ) {
+    if ((path?.includes('doctorhome') || path?.includes('doctdapp') || path?.includes('docacceptedappointments')) && (this.myauth.authour==='doctor.com')) {
  
       return true;
     }
 
-    if (path?.includes('nursehome') || path?.includes('nurse_profile')|| path?.includes('nurse_appointment') && this.myauth.authour==='nurse.com' ) {
+    if ((path?.includes('nursehome') || path?.includes('nurse_appointment')) && (this.myauth.authour==='nurse.com' )) {
  
       return true;
     }
-    if(path?.includes('patient_profile') || path?.includes('patient_book_app') && this.patientService.isPatientLoggedIn === true){
+    // isPatientLoggedIn
+    if((path?.includes('patient_profile') || path?.includes('patient_book_app')) && (this.patientService.isPatientLoggedIn === true)){
       return true;
     }
     this.route.navigateByUrl('/forbiddenroute'); 
