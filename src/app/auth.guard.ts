@@ -36,9 +36,6 @@ export class AuthGuard implements CanActivate {
     if(path?.includes('patient_profile') || path?.includes('patient_book_app') && this.patientService.isPatientLoggedIn === true){
       return true;
     }
-   
-    
-
     this.route.navigateByUrl('/forbiddenroute'); 
     return false;
   }

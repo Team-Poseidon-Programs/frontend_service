@@ -27,23 +27,23 @@ export class NurseVitalContentComponent implements OnInit {
         this.vitalsService.myData.acceptance = 2;
         this.vitalsService.update(this.vitalsService.myData).subscribe(res => {
           console.log(res);
+          this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['nurse_appointment'])
+          })
         })
       }
       this.isval = "true";
       this.vitalsService.getMedicalHistory(data.patientId).subscribe(data => {
         this.allergyData(data[data.length - 1].id)
       });
-      this.router.navigateByUrl('', {skipLocationChange: true}).then(() => {
-        this.router.navigate(['nurse_appointment'])
-      })
     })
-    this.vitalsService.postBg(bg).subscribe(data => {console.log(data)});
-    this.vitalsService.postBpd(bp).subscribe(data => {console.log(data)});
-    this.vitalsService.postBps(bps).subscribe(data => {console.log(data)});
-    this.vitalsService.postHeight(height).subscribe(data => {console.log(data)});
-    this.vitalsService.postTemp(temp).subscribe(data => {console.log(data)});
-    this.vitalsService.postResp(rr).subscribe(data => {console.log(data)});
-    this.vitalsService.postWeight(weight).subscribe(data => {console.log(data)});
+    this.vitalsService.postBg(bg).subscribe(data => { console.log(data) });
+    this.vitalsService.postBpd(bp).subscribe(data => { console.log(data) });
+    this.vitalsService.postBps(bps).subscribe(data => { console.log(data) });
+    this.vitalsService.postHeight(height).subscribe(data => { console.log(data) });
+    this.vitalsService.postTemp(temp).subscribe(data => { console.log(data) });
+    this.vitalsService.postResp(rr).subscribe(data => { console.log(data) });
+    this.vitalsService.postWeight(weight).subscribe(data => { console.log(data) });
     this.dialogRef.close();
   }
 

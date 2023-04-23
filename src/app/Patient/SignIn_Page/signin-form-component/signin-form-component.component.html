@@ -68,7 +68,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Confirm Password</mat-label>
                         <input type="password" name="Confirmpassword" id="cPass" matInput ngModel
-                            #Confirmpassword='ngModel' [(ngModel)]="confirmPassword"
+                            #Confirmpassword='ngModel' [(ngModel)]="confirmPassword" required
                             (change)='getValue(Confirmpassword.value)' (change)="checkPassword()">
                         <!-- <mat-error *ngIf="Confirmpassword.touched && (Confirmpassword.invalid ||Confirmpassword.errors?.pattern)">Invalid
                                 password format</mat-error> -->
@@ -117,6 +117,9 @@
                     <mat-label>Address</mat-label>
                     <input type="text" name="address" matInput ngModel #Address='ngModel' (change)="getValue(Address)"
                         required pattern="\w{3,50}">
+                        <mat-error *ngIf="">invalid address</mat-error>
+                        <mat-error *ngIf="Address.touched && (Address.invalid||Address.errors?.pattern)">min 3
+                            characters</mat-error>
                 </mat-form-field>
             </div>
 

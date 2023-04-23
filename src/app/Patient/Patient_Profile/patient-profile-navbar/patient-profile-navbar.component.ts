@@ -11,6 +11,6 @@ export class PatientProfileNavbarComponent {
   onLogout(){
     this.service.isPatientLoggedIn = false;
     console.log("logout");
-    // localStorage.clear();
+    localStorage.clear();
   }
 }
