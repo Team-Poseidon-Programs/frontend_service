@@ -153,7 +153,7 @@ export class PatAppointmentContentComponent implements OnInit {
           this.load = false;
           this.show = false;
         }
-        if(this.doctorsList.length >1){
+        if(this.doctorsList.length >= 1){
         this.load=false;
         }
       }
